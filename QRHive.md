@@ -1,124 +1,125 @@
-╔═══════════════════════════════════════════════════════════════════════════╗
-║                                                                           ║
-║   ██████  ██████  ██   ██ ██ ██    ██ ███████                             ║
-║  ██    ██ ██   ██ ██   ██ ██ ██    ██ ██                                  ║
-║  ██    ██ ██████  ███████ ██ ██    ██ █████                               ║
-║  ██ ▄▄ ██ ██   ██ ██   ██ ██  ██  ██  ██                                  ║
-║   ██████  ██   ██ ██   ██ ██   ████   ███████                             ║
-║      ▀▀                                                                   ║
-║                                                                           ║
-║  QRHive Deep QR Code Analysis & Threat Hunting Tool Manual                ║
-║                                                                           ║
-╚═══════════════════════════════════════════════════════════════════════════╝
+```text
+╔═══════════════════════════════════════════════════════════════════════════
+║
+║   ██████  ██████  ██   ██ ██ ██    ██ ███████
+║  ██    ██ ██   ██ ██   ██ ██ ██    ██ ██
+║  ██    ██ ██████  ███████ ██ ██    ██ █████
+║  ██ ▄▄ ██ ██   ██ ██   ██ ██  ██  ██  ██
+║   ██████  ██   ██ ██   ██ ██   ████   ███████
+║      ▀▀
+║
+║  QRHive Deep QR Code Analysis & Threat Hunting Tool Manual
+║
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ I. Software Introduction ]
+╠═══════════════════════════════════════════════════════════════════════════
+║ QRHive is a localized tool designed for Blue Team analysis and Red Team
+║ testing. It not only has powerful barcode decoding capabilities, but
+║ also digs out malicious encodings, embedded images, dangerous features,
+║ and threat intelligence (IoC) hidden behind QR codes.
+║
+║ [ Core Features ]
+║ ├─► Multi-engine Fallback: zxing-cpp, pyzbar, opencv integrated.
+║ ├─► Deep Unwrapping: Auto-decodes nested encodings (Base64, Hex, gzip)
+║ │   up to 5 layers.
+║ ├─► IoC Extraction: One-click extraction of IPs, domains, URLs, hashes,
+║ │   CVEs, and registry paths.
+║ ├─► Heuristic Scoring: Auto-highlights malicious features like
+║ │   PowerShell obfuscation or pseudo-protocols.
+║ ├─► Precise Visualization: Blue bounding box drawn at low level, always
+║ │   sticks to the QR code regardless of window resizing.
+║ └─► Global Dark Mode: Perfectly adapted UI darkening to protect eyes.
+║
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ II. Functional Usage Guide ]
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ 1. Analyze (Main Interface) ] ———— Deep Analysis for Single File
+║ │
+║ ├─► Step 1: Load Data
+║ │    ├── Drag & drop the image into the left source area
+║ │    ├── Shortcut Ctrl+O to select a file (PDF supported)
+║ │    └── Shortcut Ctrl+V to paste clipboard screenshot
+║ │
+║ ├─► Step 2: View Results
+║ │    └── Switch between 8 tabs on the right panel:
+║ │         [Text] ── Decoded plaintext
+║ │         [Image] ── Extracted images from QR
+║ │         [Raw Bytes] ── Underlying data in Hex format
+║ │         [Decoding Chain] ── Multi-layer decoding process
+║ │         [Structured] ── WiFi password, URL params parsing
+║ │         [IoC] ── Extracted domains/IPs/hashes etc.
+║ │         [Suspicion] ── Threat score and hit rules
+║ │         [EXIF] ── Image metadata
+║ │
+║ └─► Step 3: Export & Save
+║      ├── Click [Copy All]: Copy text & IoC in one click
+║      └── Click [Export Report]: Generate a well-formatted HTML report
+║
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ 2. Batch Processing ] ———— Rapid Multi-file Screening
+╠═══════════════════════════════════════════════════════════════════════════
+║ ├─► Step 1: Add Samples
+║ │    └── Go to [Batch] tab, add files or a whole folder
+║ │
+║ ├─► Step 2: Start Scan
+║ │    └── Auto-iterates images, displays results in a table
+║ │        (Engine/Suspicion/Time)
+║ │
+║ └─► Step 3: Export Data
+║      └── Click [Export CSV] to save as a table for archiving
+║
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ 3. Generator ] ———— Create Test Samples
+╠═══════════════════════════════════════════════════════════════════════════
+║ ├─► Step 1: Configure Parameters
+║ │    └── Enter content, select EC level, border, colors
+║ │        (ColorPicker supported)
+║ │
+║ └─► Step 2: Generate & Save
+║      └── Click [Generate] to preview, then [Save PNG] to save locally
+║
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ 4. Range ] ———— Engine Capability Comparison
+╠═══════════════════════════════════════════════════════════════════════════
+║ ├─► Step 1: Select Directory
+║ │    └── Select a folder containing test images
+║ │
+║ └─► Step 2: Start Evaluation
+║      └── Tests zxing / pyzbar / opencv, table shows ✓ or ✗ for each
+║
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ 5. Settings ] ———— Software Tuning
+╠═══════════════════════════════════════════════════════════════════════════
+║ ├─► Preprocessing Strategies
+║ │    └── For blurry images, check Grayscale/Binarize/Sharpen, auto-applied
+║ │
+║ ├─► Theme Switching
+║ │    └── Select "Dark Mode" in dropdown, click [Apply Theme] globally
+║ │
+║ └─► Threat Rule Management
+║      └── Open the rule file, modify rules/heuristics.json, then hot-reload
+║
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ 6. History & Camera ]
+╠═══════════════════════════════════════════════════════════════════════════
+║ ├─► History Records
+║ │    └── Go to [History] tab, view auto-saved evidence packages on exit
+║ │
+║ └─► Camera Scan
+║      └── Click [Camera], aim at screen or paper QR, auto-analyze
+║
+╠═══════════════════════════════════════════════════════════════════════════
+║ [ 7. Command Line Interface (CLI) ] ———— Automation Integration
+╠═══════════════════════════════════════════════════════════════════════════
+║ ├─► Plain Text Output
+║ │    └── python QRHive.py --scan sample.jpg
+║ │
+║ └─► JSON Intelligence Output
+║      └── python QRHive.py --scan sample.jpg --json
+╚═══════════════════════════════════════════════════════════════════════════
+```
 
-┌───────────────────────────────────────────────────────────────────────────┐
-│ [ I. Software Introduction ]                                              │
-├───────────────────────────────────────────────────────────────────────────┤
-│ QRHive is a localized tool designed for Blue Team analysis and Red Team   │
-│ testing. It not only has powerful barcode decoding capabilities, but      │
-│ also digs out malicious encodings, embedded images, dangerous features,   │
-│ and threat intelligence (IoC) hidden behind QR codes.                     │
-│                                                                           │
-│  [ Core Features ]                                                        │
-│  ├─► Multi-engine Fallback: zxing-cpp, pyzbar, opencv integrated.         │
-│  ├─► Deep Unwrapping: Auto-decodes nested encodings (Base64, Hex, gzip)   │
-│  │   up to 5 layers.                                                      │
-│  ├─► IoC Extraction: One-click extraction of IPs, domains, URLs, hashes,  │
-│  │   CVEs, and registry paths.                                            │
-│  ├─► Heuristic Scoring: Auto-highlights malicious features like           │
-│  │   PowerShell obfuscation or pseudo-protocols.                          │
-│  ├─► Precise Visualization: Blue bounding box drawn at low level, always  │
-│  │   sticks to the QR code regardless of window resizing.                 │
-│  └─► Global Dark Mode: Perfectly adapted UI darkening to protect eyes.    │
-└───────────────────────────────────────────────────────────────────────────┘
-
-┌───────────────────────────────────────────────────────────────────────────┐
-│ [ II. Functional Usage Guide ]                                            │
-└───────────────────────────────────────────────────────────────────────────┘
-
-  [ 1. Analyze (Main Interface) ] ———— Deep Analysis for Single File
-  │
-  ├─► Step 1: Load Data
-  │    ├── Drag & drop the image into the left source area
-  │    ├── Shortcut Ctrl+O to select a file (PDF supported)
-  │    └── Shortcut Ctrl+V to paste clipboard screenshot
-  │
-  ├─► Step 2: View Results
-  │    └── Switch between 8 tabs on the right panel:
-  │         [Text] ── Decoded plaintext
-  │         [Image] ── Extracted images from QR
-  │         [Raw Bytes] ── Underlying data in Hex format
-  │         [Decoding Chain] ── Multi-layer decoding process
-  │         [Structured] ── WiFi password, URL params parsing
-  │         [IoC] ── Extracted domains/IPs/hashes etc.
-  │         [Suspicion] ── Threat score and hit rules
-  │         [EXIF] ── Image metadata
-  │
-  └─► Step 3: Export & Save
-       ├── Click [Copy All]: Copy text & IoC in one click
-       └── Click [Export Report]: Generate a well-formatted HTML report
-
-
-  [ 2. Batch Processing ] ———— Rapid Multi-file Screening
-  │
-  ├─► Step 1: Add Samples
-  │    └── Go to [Batch] tab, add files or a whole folder
-  │
-  ├─► Step 2: Start Scan
-  │    └── Auto-iterates images, displays results in a table (Engine/Suspicion/Time)
-  │
-  └─► Step 3: Export Data
-       └── Click [Export CSV] to save as a table for archiving
-
-
-  [ 3. Generator ] ———— Create Test Samples
-  │
-  ├─► Step 1: Configure Parameters
-  │    └── Enter content, select EC level, border, colors (ColorPicker supported)
-  │
-  └─► Step 2: Generate & Save
-       └── Click [Generate] to preview, then [Save PNG] to save locally
-
-
-  [ 4. Range ] ———— Engine Capability Comparison
-  │
-  ├─► Step 1: Select Directory
-  │    └── Select a folder containing test images
-  │
-  └─► Step 2: Start Evaluation
-       └── Tests zxing / pyzbar / opencv, table shows ✓ or ✗ for each engine
-
-
-  [ 5. Settings ] ———— Software Tuning
-  │
-  ├─► Preprocessing Strategies
-  │    └── For blurry images, check Grayscale/Binarize/Sharpen, auto-applied
-  │
-  ├─► Theme Switching
-  │    └── Select "Dark Mode" in dropdown, click [Apply Theme] globally
-  │
-  └─► Threat Rule Management
-       └── Open the rule file, modify rules/heuristics.json, then hot-reload
-
-
-  [ 6. History & Camera ]
-  │
-  ├─► History Records
-  │    └── Go to [History] tab, view auto-saved evidence packages on exit
-  │
-  └─► Camera Scan
-       └── Click [Camera], aim at screen or paper QR, auto-analyze upon recognition
-
-
-  [ 7. Command Line Interface (CLI) ] ———— Automation Integration
-  │
-  ├─► Plain Text Output
-  │    └── python QRHive.py --scan sample.jpg
-  │
-  └─► JSON Intelligence Output
-       └── python QRHive.py --scan sample.jpg --json
-==================================================
-
+```text
 ╔═══════════════════════════════════════════════════════════════════════════
 ║
 ║   ██████  ██████  ██   ██ ██ ██    ██ ███████
@@ -133,8 +134,8 @@
 ╠═══════════════════════════════════════════════════════════════════════════
 ║ 【一、 软件介绍】
 ╠═══════════════════════════════════════════════════════════════════════════
-║ QRHive 是一款专为安全蓝队研判与红队测试设计的本地化工具。它不仅具备超强解码能
-║ 力，更能将隐藏在二维码背后的恶意编码、内嵌图片、危险特征以及威胁情报全部挖掘出来。
+║ QRHive 是一款专为安全蓝队研判与红队测试设计的本地化工具。它不仅具备超强解码能力，
+║ 更能将隐藏在二维码背后的恶意编码、内嵌图片、危险特征以及威胁情报全部挖掘出来。
 ║
 ║ [ 核心亮点 ]
 ║ ├─► 多引擎兜底：集成 zxing-cpp、pyzbar、opencv，识别率极高。
@@ -229,3 +230,4 @@
 ║ └─► JSON 情报输出
 ║      └── python QRHive.py --scan 样本.jpg --json
 ╚═══════════════════════════════════════════════════════════════════════════
+```
