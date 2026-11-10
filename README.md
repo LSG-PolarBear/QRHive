@@ -27,10 +27,7 @@ Get-FileHash QRHive.zip -Algorithm SHA256
  
 Compare the output hash with the value above (case-insensitive). If they match, the file is intact and safe to extract.
 
-
-
-
-
+```text
 ╔═══════════════════════════════════════════════════════════════════════════
 ║
 ║   ██████  ██████  ██   ██ ██ ██    ██ ███████
@@ -149,10 +146,9 @@ Compare the output hash with the value above (case-insensitive). If they match, 
 ║ └─► JSON Intelligence Output
 ║      └── python QRHive.py --scan sample.jpg --json
 ╚═══════════════════════════════════════════════════════════════════════════
+```
 
-
-
-
+```text
 ╔═══════════════════════════════════════════════════════════════════════════
 ║
 ║   ██████  ██████  ██   ██ ██ ██    ██ ███████
@@ -263,4 +259,4 @@ Compare the output hash with the value above (case-insensitive). If they match, 
 ║ └─► JSON 情报输出
 ║      └── python QRHive.py --scan 样本.jpg --json
 ╚═══════════════════════════════════════════════════════════════════════════
-
+```
